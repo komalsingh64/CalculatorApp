@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Multi-Calculator & FX Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<div class="calculator" id="calculatorBody">
+    <!-- Speaker Notch -->
+    <div class="notch"></div>
+
+    <!-- History Drawer -->
+    <div class="history">
+        <div class="history-header">
+            <span>Recent Calculations</span>
+            <button onclick="clearHistory()">Clear</button>
+        </div>
+        <ul id="historyList"></ul>
+    </div>
+
+    <h1>⚡ Smart FX Calculator</h1>
+
+    <!-- Mode Toggles -->
+    <div class="top-controls">
+        <button id="sciToggleBtn" onclick="toggleScientific()">🧠 Scientific Mode</button>
+        <button onclick="toggleTheme()">🌓 Theme</button>
+    </div>
+
+    <!-- Currency Bar -->
+    <div class="currency-bar">
+        <button class="curr-btn" onclick="convertToINR()">💵 USD ➔ ₹ INR</button>
+        <button class="curr-btn" onclick="convertToUSD()">₹ INR ➔ 💵 USD</button>
+    </div>
+
+    <!-- Display Screen -->
+    <div class="display-container">
+        <div id="subDisplay" class="sub-display"></div>
+        <input type="text" id="display" readonly placeholder="0">
+    </div>
+
+    <!-- Scientific Function Grid (Collapsible) -->
+    <div class="scientific-panel hidden" id="scientificPanel">
+        <button class="sci-btn" onclick="addValue('Math.sin(')">sin</button>
+        <button class="sci-btn" onclick="addValue('Math.cos(')">cos</button>
+        <button class="sci-btn" onclick="addValue('Math.tan(')">tan</button>
+        <button class="sci-btn" onclick="addValue('Math.PI')">π</button>
+        
+        <button class="sci-btn" onclick="addValue('Math.log10(')">log</button>
+        <button class="sci-btn" onclick="addValue('Math.log(')">ln</button>
+        <button class="sci-btn" onclick="addValue('Math.sqrt(')">√</button>
+        <button class="sci-btn" onclick="addValue('Math.E')">e</button>
+
+        <button class="sci-btn" onclick="addValue('**2')">x²</button>
+        <button class="sci-btn" onclick="addValue('**')">xʸ</button>
+        <button class="sci-btn" onclick="addValue('(')">(</button>
+        <button class="sci-btn" onclick="addValue(')')">)</button>
+    </div>
+
+    <!-- Standard Calculator Pad -->
+    <div class="buttons">
+        <button class="op clear-btn" onclick="clearDisplay()">C</button>
+        <button class="op" onclick="deleteLast()">⌫</button>
+        <button class="op" onclick="addValue('%')">%</button>
+        <button class="op" onclick="addValue('/')">÷</button>
+
+        <button onclick="addValue('7')">7</button>
+        <button onclick="addValue('8')">8</button>
+        <button onclick="addValue('9')">9</button>
+        <button class="op" onclick="addValue('*')">×</button>
+
+        <button onclick="addValue('4')">4</button>
+        <button onclick="addValue('5')">5</button>
+        <button onclick="addValue('6')">6</button>
+        <button class="op" onclick="addValue('-')">−</button>
+
+        <button onclick="addValue('1')">1</button>
+        <button onclick="addValue('2')">2</button>
+        <button onclick="addValue('3')">3</button>
+        <button class="op" onclick="addValue('+')">+</button>
+
+        <button onclick="addValue('0')" class="zero">0</button>
+        <button onclick="addValue('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
